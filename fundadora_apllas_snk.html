@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundadora Apllas | Clan SNK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --snk-pink: #FFB6C1;
+            --snk-white: #FFFFFF;
+            --snk-dark: #1A1A1D;
+            --snk-darker: #0F0F11;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--snk-dark);
+            color: var(--snk-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .glow-effect {
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.5), 0 0 20px rgba(255, 182, 193, 0.3);
+        }
+
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 182, 193, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+        }
+
+        /* Efeito para o elemento substituto da imagem */
+        .founder-avatar-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.15);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            background: linear-gradient(135deg, var(--snk-darker) 0%, var(--snk-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .founder-avatar-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(15, 15, 17, 0.9) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .avatar-initial {
+            font-size: 8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--snk-pink) 0%, var(--snk-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <div class="bg-particles"></div>
+
+    <!-- Navegação -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center fixed top-0 z-50 bg-opacity-90 bg-[#1A1A1D] backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="text-2xl font-bold tracking-widest glow-effect hover:scale-105 transition-transform">
+            <span style="color: var(--snk-pink)">S</span>
+            <span style="color: var(--snk-white)">N</span>
+            <span style="color: var(--snk-pink)">K</span>
+        </a>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+            <a href="index.html" class="text-gray-400 hover:text-white transition-colors duration-300">Início</a>
+            <a href="#" class="text-[#FFB6C1] font-semibold border-b-2 border-[#FFB6C1] pb-1">A Fundadora</a>
+        </div>
+        <a href="index.html" class="md:hidden text-gray-400">Voltar</a>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 pt-32 pb-20">
+        <div class="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Imagem / Avatar Substituto -->
+            <div class="order-2 lg:order-1 flex justify-center lg:justify-end">
+                <div class="founder-avatar-container w-64 h-64 md:w-96 md:h-96 relative">
+                    <!-- Elemento decorativo com a logo da SNK -->
+                    <div class="flex flex-col items-center justify-center z-10 animate-float w-full h-full">
+                        <div class="text-7xl md:text-8xl font-black tracking-widest flex items-center justify-center gap-1 drop-shadow-[0_0_15px_rgba(255,182,193,0.5)]">
+                            <span style="color: var(--snk-pink)">S</span>
+                            <span style="color: var(--snk-white)">N</span>
+                            <span style="color: var(--snk-pink)">K</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-4 left-4 z-20">
+                        <span class="bg-[#FFB6C1] text-[#1A1A1D] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">Líder Fundadora</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Texto e Informações -->
+            <div class="order-1 lg:order-2 text-center lg:text-left">
+                <div class="inline-block mb-3 px-3 py-1 border border-[#FFB6C1]/30 rounded-full bg-white/5 text-[#FFB6C1] text-xs tracking-widest uppercase">
+                    A Visionária
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+                    Apllas
+                </h1>
+                
+                <div class="w-20 h-1 bg-gradient-to-r from-[#FFB6C1] to-white mb-8 mx-auto lg:mx-0 rounded-full"></div>
+
+                <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-6 font-light">
+                    A mente brilhante por trás da criação do clan <span style="color: var(--snk-pink)" class="font-medium">S</span><span class="text-white font-medium">N</span><span style="color: var(--snk-pink)" class="font-medium">K</span>. Foi sob sua liderança que a irmandade se formou e começou a deixar sua marca no servidor Armageddon.
+                </p>
+
+                <p class="text-gray-400 text-base leading-relaxed mb-10">
+                    Conhecida por sua estratégia impecável e dedicação implacável aos membros, Apllas construiu os pilares do Strawberry Night Kisses baseados no respeito mútuo, força conjunta e uma pitada de elegância caótica. Sua visão guia o clan através de cada batalha e conquista.
+                </p>
+
+                <!-- Destaques -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-black/30 border border-white/5 p-4 rounded-xl">
+                        <div class="text-[#FFB6C1] font-mono text-2xl font-bold mb-1">Fundação</div>
+                        <div class="text-gray-400 text-sm">O início do legado SNK.</div>
+                    </div>
+                    <div class="bg-black/30 border border-white/5 p-4 rounded-xl">
+                        <div class="text-white font-mono text-2xl font-bold mb-1">Estratégia</div>
+                        <div class="text-gray-400 text-sm">Mente tática por trás do Armageddon.</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center text-gray-600 text-xs border-t border-white/5 mt-auto">
+        <p>Clan SNK - Strawberry Night Kisses</p>
+    </footer>
+
+</body>
+</html>
