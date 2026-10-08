@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clan SNK | Strawberry Night Kisses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --snk-pink: #FFB6C1; /* Rosa claro para S e K */
+            --snk-white: #FFFFFF; /* Branco para N */
+            --snk-dark: #1A1A1D; /* Fundo escuro elegante */
+            --snk-darker: #0F0F11;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--snk-dark);
+            color: var(--snk-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Efeitos de gradiente para texto e fundos */
+        .text-gradient-snk {
+            background: linear-gradient(90deg, var(--snk-pink) 0%, var(--snk-white) 50%, var(--snk-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glow-effect {
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.5), 0 0 20px rgba(255, 182, 193, 0.3);
+        }
+
+        .bg-gradient-subtle {
+            background: linear-gradient(135deg, var(--snk-darker) 0%, var(--snk-dark) 100%);
+        }
+
+        /* Animação simples de flutuação para o logo ou elementos decorativos */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Estilo para a box de IP do servidor */
+        .ip-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .ip-box:hover {
+            border-color: var(--snk-pink);
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Notificação de cópia de IP */
+        #copy-toast {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        #copy-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efeito de partículas sutis no fundo (feito com CSS puro para simplicidade) */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 182, 193, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <div class="bg-particles"></div>
+
+    <!-- Navegação / Header -->
+    <nav class="w-full py-6 px-8 flex justify-between items-center fixed top-0 z-50 bg-opacity-90 bg-[#1A1A1D] backdrop-blur-md border-b border-white/5">
+        <div class="text-2xl font-bold tracking-widest glow-effect">
+            <span style="color: var(--snk-pink)">S</span>
+            <span style="color: var(--snk-white)">N</span>
+            <span style="color: var(--snk-pink)">K</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+            <a href="#sobre" class="hover:text-[#FFB6C1] transition-colors duration-300">Sobre nós</a>
+            <a href="#servidor" class="hover:text-[#FFB6C1] transition-colors duration-300">Servidor</a>
+            <a href="#recrutamento" class="hover:text-[#FFB6C1] transition-colors duration-300">Junte-se</a>
+        </div>
+        <button class="md:hidden text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </nav>
+
+    <!-- Seção Hero -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 pt-32 pb-20 text-center">
+        
+        <div class="mb-6 animate-float">
+            <!-- Representação visual estilizada do nome do clan -->
+            <h1 class="text-7xl md:text-9xl font-black mb-2 flex items-center justify-center gap-2">
+                <span style="color: var(--snk-pink);" class="drop-shadow-[0_0_15px_rgba(255,182,193,0.5)]">S</span>
+                <span style="color: var(--snk-white);" class="drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">N</span>
+                <span style="color: var(--snk-pink);" class="drop-shadow-[0_0_15px_rgba(255,182,193,0.5)]">K</span>
+            </h1>
+        </div>
+
+        <h2 class="text-2xl md:text-4xl font-light mb-8 tracking-wide text-gray-300">
+            Strawberry <span class="text-white font-medium">Night</span> Kisses
+        </h2>
+
+        <p class="max-w-2xl text-gray-400 mb-12 text-lg leading-relaxed">
+            Uma irmandade forjada na batalha, unida sob o céu estrelado. Somos o clan SNK, marcando presença e dominando territórios no servidor Armageddon.
+        </p>
+
+        <!-- IP Box Interativa -->
+        <div id="servidor" class="ip-box rounded-2xl p-6 md:p-8 max-w-lg w-full mx-auto relative group">
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-[#FFB6C1] to-white opacity-20 group-hover:opacity-40 rounded-2xl blur transition duration-500"></div>
+            <div class="relative flex flex-col items-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-[#FFB6C1] mb-2">Servidor Oficial</span>
+                <h3 class="text-xl font-semibold mb-4 text-white">Armageddon Minecraft</h3>
+                
+                <div class="w-full bg-black/40 rounded-lg p-4 flex items-center justify-between cursor-pointer border border-white/10 hover:border-[#FFB6C1]/50 transition-colors group/ip" onclick="copyIP()">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="font-mono text-lg tracking-wider text-gray-200 group-hover/ip:text-white transition-colors" id="server-ip">armamc.com</span>
+                    </div>
+                    <div class="text-gray-400 group-hover/ip:text-[#FFB6C1] transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-3 text-center">Clique para copiar o IP e junte-se a nós no Armageddon.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Seção Sobre (Detalhes) -->
+    <section id="sobre" class="py-20 px-4 bg-gradient-subtle border-y border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4"><span style="color: var(--snk-pink)">Nossa</span> Essência</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-[#FFB6C1] to-white mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-black/20 p-8 rounded-2xl border border-white/5 hover:border-[#FFB6C1]/30 transition-all duration-300">
+                    <div class="text-[#FFB6C1] mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Comunidade Unida</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Mais do que jogadores, somos uma família. Valorizamos o companheirismo e o suporte mútuo dentro e fora das batalhas.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-black/20 p-8 rounded-2xl border border-white/5 hover:border-white/30 transition-all duration-300">
+                    <div class="text-white mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Domínio Armageddon</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Nossa base de operações. Estabelecemos nossa presença no servidor Armageddon com estratégia, força e alianças duradouras.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-black/20 p-8 rounded-2xl border border-white/5 hover:border-[#FFB6C1]/30 transition-all duration-300">
+                    <div class="text-[#FFB6C1] mb-4">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Estilo Inconfundível</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Strawberry Night Kisses. Carregamos nossas cores (Rosa e Branco) com orgulho, trazendo um toque de elegância letal ao servidor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Simples -->
+    <footer class="py-8 text-center text-gray-500 text-sm border-t border-white/5 mt-auto">
+        <p>© 2026 Clan SNK (Strawberry Night Kisses). Todos os direitos reservados.</p>
+        <p class="mt-2">Jogue conosco no <span class="text-gray-300 font-mono">armamc.com</span></p>
+    </footer>
+
+    <!-- Toast Notification (Mensagem de cópia) -->
+    <div id="copy-toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white text-black px-6 py-3 rounded-full shadow-lg font-medium text-sm flex items-center gap-2 z-50">
+        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        IP armamc.com copiado!
+    </div>
+
+    <script>
+        // Função para copiar o IP e mostrar notificação
+        function copyIP() {
+            const ipText = document.getElementById('server-ip').innerText;
+            
+            // Tenta usar a API moderna da área de transferência
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(ipText).then(() => {
+                    showToast();
+                }).catch(err => {
+                    console.error('Falha ao copiar:', err);
+                    fallbackCopyTextToClipboard(ipText);
+                });
+            } else {
+                // Fallback para navegadores antigos ou ambientes sem HTTPS (como iframes as vezes)
+                fallbackCopyTextToClipboard(ipText);
+            }
+        }
+
+        // Fallback de cópia usando execCommand (útil em alguns sandboxes)
+        function fallbackCopyTextToClipboard(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            // Evita scroll para a parte inferior da página
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    showToast();
+                }
+            } catch (err) {
+                console.error('Erro no fallback de cópia', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        // Função para mostrar a mensagem "Copiado"
+        function showToast() {
+            const toast = document.getElementById('copy-toast');
+            toast.classList.add('show');
+            
+            // Remove a notificação após 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
